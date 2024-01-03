@@ -1,8 +1,7 @@
 const swiper = new Swiper(".swiper", {
   // Optional parameters
   direction: "horizontal",
-  loop: true,
-
+  
   // If we need pagination
   pagination: {
     el: ".swiper-pagination",
@@ -12,6 +11,7 @@ const swiper = new Swiper(".swiper", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  loop: true,
   slidesPerView: 3,
   spaceBetween: 30,
   // And if we need scrollbar
@@ -29,7 +29,7 @@ fetch("https://jsonplaceholder.typicode.com/posts")
 
     posts.slice(0, 10).forEach((post) => {
       const slide = document.createElement("div");
-      const postTitle = document.createElement("h4");
+      const postTitle = document.createElement("h3");
       const postText = document.createElement("p");
       const postReadMoreLink = document.createElement("a");
 
