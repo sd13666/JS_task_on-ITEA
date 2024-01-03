@@ -1,12 +1,14 @@
 * {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
 }
 html,
 body {
+  max-width: 1400px;
+  margin: 0 auto;
   height: 100%;
   background-color: rgb(135, 238, 238);
   font-size: 24px;  
-  font-family: "IBM Plex Sans", sans-serif;
+  
 }
 .wrapper {
   min-height: 100%;
@@ -14,7 +16,7 @@ body {
   flex-direction: column;
 }
 h1,
-h4 {
+h5 {
   background-color: aquamarine;
   width: auto;
   border: 1px solid rgb(29, 247, 87);
@@ -27,8 +29,31 @@ h4 {
   padding: 10px;
   flex: 1 1 auto;
 }
+.article {
+  background-color: rgb(104, 245, 245);
+}
 
 .swiper {
   width: auto;
-  height: 300px;
+  height: 200px;
+}
+
+
+
+
+.post-title {
+  font-size: 18px;
+  margin: 0;
+}
+.post-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+.post-link {
+  text-align: center;
+  color: cornflowerblue;
 }
