@@ -14,8 +14,6 @@ const swiper = new Swiper(".swiper", {
   },
 });
 
-
-
 fetch("https://jsonplaceholder.typicode.com/posts")
   .then((response) => response.json())
   .then((posts) => {
@@ -41,9 +39,7 @@ fetch("https://jsonplaceholder.typicode.com/posts")
     console.error('Помилка під час виконання запиту:', error);
   });
 
-
-
-  fetch("https://jsonplaceholder.typicode.com/photos")
+fetch("https://jsonplaceholder.typicode.com/photos")
   .then((response) => response.json())
   .then((photos) => {
     const usersPhotos = document.querySelector(".users-card__list");
@@ -73,3 +69,5 @@ fetch("https://jsonplaceholder.typicode.com/posts")
   .catch(error => {
     console.error('Помилка під час виконання запиту:', error);
   });
+
+  
