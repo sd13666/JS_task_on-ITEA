@@ -72,5 +72,6 @@ h5 {
   height: 200px;
 }
 .users-card__name {
+  margin-top: 20px;
   text-align: center;
 }

@@ -35,39 +35,36 @@ fetch("https://jsonplaceholder.typicode.com/posts")
       swiperWrapper.appendChild(slide);
     });
   })
-  .catch(error => {
-    console.error('Помилка під час виконання запиту:', error);
+  .catch((error) => {
+    console.error("Помилка під час виконання запиту:", error);
   });
 
-
-  fetch("https://jsonplaceholder.typicode.com/photos")
+fetch("https://jsonplaceholder.typicode.com/photos")
   .then((response) => response.json())
   .then((photos) => {
     fetch("https://jsonplaceholder.typicode.com/users")
-    .then((response) => response.json())
-    .then((users) => {
-  
-      const usersPhotos = document.querySelector(".users-card__list");
-  
-      users.forEach((user, index) => {
-        const userCard = document.createElement("li");
-        const userPhoto = document.createElement("img");
-        const userName = document.createElement("span");
-  
-        const userPhotoIndex = photos.find(photo => photo.id === user.id);
-userPhoto.src = userPhotoIndex.url;
+      .then((response) => response.json())
+      .then((users) => {
+        const usersPhotos = document.querySelector(".users-card__list");
 
-        userName.textContent = user.name;
-  
-        userCard.classList.add('users-card__item');
-        userPhoto.classList.add('users-card__photo');
-        userName.classList.add('users-card__name');
-  
-        userCard.appendChild(userPhoto);
-        userCard.appendChild(userName);
-        usersPhotos.appendChild(userCard);
+        users.forEach((user, index) => {
+          const userCard = document.createElement("li");
+          const userPhoto = document.createElement("img");
+          const userName = document.createElement("span");
+
+          const userPhotoIndex = photos.find((photo) => photo.id === user.id);
+          userPhoto.src = userPhotoIndex.url;
+
+          userName.textContent = user.name;
+
+          userCard.classList.add("users-card__item");
+          userPhoto.classList.add("users-card__photo");
+          userName.classList.add("users-card__name");
+
+          userCard.appendChild(userPhoto);
+          userCard.appendChild(userName);
+          usersPhotos.appendChild(userCard);
+        });
       });
-    });
   });
-
 
