@@ -1,4 +1,7 @@
 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "IBM Plex Sans", sans-serif;
 }
 html,
@@ -7,8 +10,7 @@ body {
   margin: 0 auto;
   height: 100%;
   background-color: rgb(135, 238, 238);
-  font-size: 24px;  
-  
+  font-size: 24px;
 }
 .wrapper {
   min-height: 100%;
@@ -32,29 +34,43 @@ h5 {
 .article {
   background-color: rgb(104, 245, 245);
   border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .swiper {
   width: auto;
-  height: 200px;
+  height: 300px;
 }
-
-
-
-
 .post-title {
   font-size: 18px;
-  margin: 0;
+  margin-bottom: 10px;
+  text-align: center;
 }
 .post-text {
-  text-overflow: ellipsis;
-  overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   white-space: normal;
 }
-.post-link {
+
+
+.users-card {
+  width: auto;
+}
+.users-card__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 50px
+}
+.users-card__item{
+  display: flex;
+  flex-direction: column;
+}
+.users-card__photo {
+  width: 200px;
+  height: 200px;
+}
+.users-card__name {
   text-align: center;
-  color: cornflowerblue;
 }

@@ -1,7 +1,7 @@
 const swiper = new Swiper(".swiper", {
   // Optional parameters
   direction: "horizontal",
-  
+
   // If we need pagination
   pagination: {
     el: ".swiper-pagination",
@@ -18,8 +18,8 @@ const swiper = new Swiper(".swiper", {
   scrollbar: {
     el: ".swiper-scrollbar",
   },
-  
 });
+
 
 
 fetch("https://jsonplaceholder.typicode.com/posts")
@@ -31,18 +31,51 @@ fetch("https://jsonplaceholder.typicode.com/posts")
       const slide = document.createElement("div");
       const postTitle = document.createElement("h3");
       const postText = document.createElement("p");
-      const postReadMoreLink = document.createElement("a");
 
       slide.classList.add("swiper-slide");
       postTitle.classList.add("post-title");
       postText.classList.add("post-text");
-      postReadMoreLink.classList.add("post-link");
 
       postTitle.innerHTML = post.title;
       postText.innerHTML = post.body;
-      postReadMoreLink.innerHTML = "Read more";
-      
-      slide.append(postTitle, postText, postReadMoreLink);
+
+      slide.append(postTitle, postText);
       swiperWrapper.appendChild(slide);
     });
+  });
+
+
+  
+  fetch("https://jsonplaceholder.typicode.com/photos")
+  .then((response) => response.json())
+  .then((photos) => {
+    const usersPhotos = document.querySelector(".users-card__list");
+
+    photos.slice(0, 10).forEach((photo, index) => {
+      const userCard = document.createElement("li");
+      const userPhoto = document.createElement("img");
+      userPhoto.src = photo.url;
+
+      userCard.classList.add('users-card__item');
+      userPhoto.classList.add('users-card__photo');
+
+      const userId = photo.albumId;
+      fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+        .then((response) => response.json())
+        .then((user) => {
+          const userName = document.createElement("span");
+          userName.textContent = user.name;
+          userName.classList.add('users-card__name');
+          userCard.appendChild(userName);
+        })
+        .catch(error => {
+          console.error('Помилка під час виконання запиту:', error);
+        });
+
+      userCard.appendChild(userPhoto);
+      usersPhotos.appendChild(userCard);
+    });
+  })
+  .catch(error => {
+    console.error('Помилка під час виконання запиту:', error);
   });
