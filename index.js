@@ -1,20 +1,14 @@
 const swiper = new Swiper(".swiper", {
-  // Optional parameters
   direction: "horizontal",
-
-  // If we need pagination
   pagination: {
     el: ".swiper-pagination",
   },
-  // Navigation arrows
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
-  loop: true,
-  slidesPerView: 3,
+  slidesPerView: 5,
   spaceBetween: 30,
-  // And if we need scrollbar
   scrollbar: {
     el: ".swiper-scrollbar",
   },
@@ -42,10 +36,13 @@ fetch("https://jsonplaceholder.typicode.com/posts")
       slide.append(postTitle, postText);
       swiperWrapper.appendChild(slide);
     });
+  })
+  .catch(error => {
+    console.error('Помилка під час виконання запиту:', error);
   });
 
 
-  
+
   fetch("https://jsonplaceholder.typicode.com/photos")
   .then((response) => response.json())
   .then((photos) => {
@@ -67,9 +64,6 @@ fetch("https://jsonplaceholder.typicode.com/posts")
           userName.textContent = user.name;
           userName.classList.add('users-card__name');
           userCard.appendChild(userName);
-        })
-        .catch(error => {
-          console.error('Помилка під час виконання запиту:', error);
         });
 
       userCard.appendChild(userPhoto);
