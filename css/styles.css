@@ -27,6 +27,9 @@ h5 {
   text-align: center;
   padding: 10px;
 }
+/* h3{
+  width: 33%;
+} */
 .main {
   padding: 10px;
   flex: 1 1 auto;

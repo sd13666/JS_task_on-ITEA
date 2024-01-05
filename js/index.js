@@ -1,25 +1,24 @@
-fetch("https://jsonplaceholder.typicode.com/posts")
-  .then((response) => response.json())
-  .then((posts) => {
-    const swiperWrapper = document.querySelector(".swiper-wrapper");
+// fetch("https://jsonplaceholder.typicode.com/posts")
+//   .then((response) => response.json())
+//   .then((posts) => {
+//     const swiperWrapper = document.querySelector(".swiper-wrapper");
 
-    posts.slice(0, 10).forEach((post) => {
-      const slide = document.createElement("div");
-      const postTitle = document.createElement("h3");
-      const postText = document.createElement("p");
+//     posts.slice(0, 10).forEach((post) => {
+//       const slide = document.createElement("div");
+//       const postTitle = document.createElement("h3");
+//       const postText = document.createElement("p");
 
-      slide.classList.add("swiper-slide");
-      postTitle.classList.add("post-title");
-      postText.classList.add("post-text");
+//       slide.classList.add("swiper-slide");
+//       postTitle.classList.add("post-title");
+//       postText.classList.add("post-text");
 
-      postTitle.innerHTML = post.title;
-      postText.innerHTML = post.body;
+//       postTitle.innerHTML = post.title;
+//       postText.innerHTML = post.body;
 
-      slide.append(postTitle, postText);
-      swiperWrapper.appendChild(slide);
-    });
-  });
-
+//       slide.append(postTitle, postText);
+//       swiperWrapper.appendChild(slide);
+//     });
+//   });
 const swiper = new Swiper(".swiper", {
   direction: "horizontal",
   pagination: {
@@ -36,12 +35,41 @@ const swiper = new Swiper(".swiper", {
   },
 });
 
+async function fetchPosts() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const posts = await response.json();
+    const swiperWrapper = document.querySelector(".swiper-wrapper");
+    posts.slice(0, 10).forEach((post) => {
+      const slide = document.createElement("div");
+      const postTitle = document.createElement("h3");
+      const postText = document.createElement("p");
+
+      slide.classList.add("swiper-slide");
+      postTitle.classList.add("post-title");
+      postText.classList.add("post-text");
+
+      postTitle.innerHTML = post.title;
+      postText.innerHTML = post.body;
+
+      slide.append(postTitle, postText);
+      swiperWrapper.appendChild(slide);
+    });
+  } catch (error) {
+    console.log("Error fetching posts:", error);
+  }
+}
+
+fetchPosts();
+
+
 fetch("https://jsonplaceholder.typicode.com/photos")
   .then((response) => response.json())
   .then((photos) => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((users) => {
+        console.log(users)
         const usersPhotos = document.querySelector(".users-card__list");
 
         users.forEach((user, index) => {
