@@ -9,7 +9,6 @@ fetch('https://jsonplaceholder.typicode.com/users')
         <p><strong>Phone:</strong> ${user.phone}</p>
         <p><strong>Address:</strong> ${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}</p>
         <p><strong>Website:</strong> ${user.website}</p>
-        <button onclick="showUserDetails(${user.id})">More Details</button>
         <hr>
       `;
       document.querySelector('.user-info').appendChild(userInfo);
