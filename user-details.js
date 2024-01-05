@@ -1,6 +1,6 @@
 fetch('https://jsonplaceholder.typicode.com/users')
   .then((response) => response.json())
-  .then((users) => {console.log(users)
+  .then((users) => {
     users.forEach((user) => {
       const userInfo = document.createElement('div');
       userInfo.innerHTML = `
@@ -9,8 +9,13 @@ fetch('https://jsonplaceholder.typicode.com/users')
         <p><strong>Phone:</strong> ${user.phone}</p>
         <p><strong>Address:</strong> ${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}</p>
         <p><strong>Website:</strong> ${user.website}</p>
+        <button onclick="showUserDetails(${user.id})">More Details</button>
         <hr>
       `;
-      document.body.appendChild(userInfo);
+      document.querySelector('.user-info').appendChild(userInfo);
     });
   });
+
+function showUserDetails(userId) {
+  window.location.href = `user-details.html?userId=${userId}`;
+}
