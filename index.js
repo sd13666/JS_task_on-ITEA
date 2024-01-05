@@ -72,49 +72,49 @@ document.addEventListener("click", function (event) {
   }
 });
 
-  fetch('https://jsonplaceholder.typicode.com/users/${userId}')
-  .then((response) => response.json())
-  .then((users) => {
-    users.forEach((user) => {
-      const userInfo = document.createElement('div');
-      userInfo.innerHTML = `
-        <h2>${user.name}</h2>
-        <p><strong>Email:</strong> ${user.email}</p>
-        <p><strong>Phone:</strong> ${user.phone}</p>
-        <p><strong>Address:</strong> ${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}</p>
-        <p><strong>Website:</strong> ${user.website}</p>
-        <hr>
-      `;
-      document.querySelector('.user-info').appendChild(userInfo);
-    });
-  });
+//   fetch('https://jsonplaceholder.typicode.com/users/${userId}')
+//   .then((response) => response.json())
+//   .then((users) => {
+//     users.forEach((user) => {
+//       const userInfo = document.createElement('div');
+//       userInfo.innerHTML = `
+//         <h2>${user.name}</h2>
+//         <p><strong>Email:</strong> ${user.email}</p>
+//         <p><strong>Phone:</strong> ${user.phone}</p>
+//         <p><strong>Address:</strong> ${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}</p>
+//         <p><strong>Website:</strong> ${user.website}</p>
+//         <hr>
+//       `;
+//       document.querySelector('.user-info').appendChild(userInfo);
+//     });
+//   });
 
-function showUserDetails(userId) {
-  window.location.href = `user-details.html?userId=${userId}`;
-}
+// function showUserDetails(userId) {
+//   window.location.href = `user-details.html?userId=${userId}`;
+// }
 
-fetch('https://jsonplaceholder.typicode.com/users')
-  .then((response) => response.json())
-  .then((users) => {
-    users.forEach((user) => {
-      const userCard = document.createElement('li');
-      userCard.classList.add('users-card__item');
-      userCard.dataset.userId = user.id;
+// fetch('https://jsonplaceholder.typicode.com/users')
+//   .then((response) => response.json())
+//   .then((users) => {
+//     users.forEach((user) => {
+//       const userCard = document.createElement('li');
+//       userCard.classList.add('users-card__item');
+//       userCard.dataset.userId = user.id;
 
-      users.forEach((user) => {
-        const userInfo = document.createElement('div');
-        userInfo.innerHTML = `
-          <h2>${user.name}</h2>
-          <p><strong>Email:</strong> ${user.email}</p>
-          <p><strong>Phone:</strong> ${user.phone}</p>
-          <p><strong>Address:</strong> ${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}</p>
-          <p><strong>Website:</strong> ${user.website}</p>
-          <button onclick="showUserDetails(${user.id})">More Details</button>
-          <hr>
-        `;
-        document.querySelector('.user-info').appendChild(userInfo);
-      });
+//       users.forEach((user) => {
+//         const userInfo = document.createElement('div');
+//         userInfo.innerHTML = `
+//           <h2>${user.name}</h2>
+//           <p><strong>Email:</strong> ${user.email}</p>
+//           <p><strong>Phone:</strong> ${user.phone}</p>
+//           <p><strong>Address:</strong> ${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}</p>
+//           <p><strong>Website:</strong> ${user.website}</p>
+//           <button onclick="showUserDetails(${user.id})">More Details</button>
+//           <hr>
+//         `;
+//         document.querySelector('.user-info').appendChild(userInfo);
+//       });
 
-      document.querySelector('.users-card__list').appendChild(userCard);
-    });
-  });
+//       document.querySelector('.users-card__list').appendChild(userCard);
+//     });
+//   });
