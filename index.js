@@ -1,24 +1,4 @@
-// fetch("https://jsonplaceholder.typicode.com/posts")
-//   .then((response) => response.json())
-//   .then((posts) => {
-//     const swiperWrapper = document.querySelector(".swiper-wrapper");
 
-//     posts.slice(0, 10).forEach((post) => {
-//       const slide = document.createElement("div");
-//       const postTitle = document.createElement("h3");
-//       const postText = document.createElement("p");
-
-//       slide.classList.add("swiper-slide");
-//       postTitle.classList.add("post-title");
-//       postText.classList.add("post-text");
-
-//       postTitle.innerHTML = post.title;
-//       postText.innerHTML = post.body;
-
-//       slide.append(postTitle, postText);
-//       swiperWrapper.appendChild(slide);
-//     });
-//   });
 const swiper = new Swiper(".swiper", {
   direction: "horizontal",
   pagination: {
@@ -62,25 +42,23 @@ async function fetchPosts() {
 
 fetchPosts();
 
-
 fetch("https://jsonplaceholder.typicode.com/photos")
   .then((response) => response.json())
   .then((photos) => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((users) => {
-        console.log(users)
         const usersPhotos = document.querySelector(".users-card__list");
 
-        users.forEach((user, index) => {
+        users.forEach((user) => {
           const userCard = document.createElement("li");
-          const userPhoto = document.createElement("img");
-          const userName = document.createElement("span");
           const link = document.createElement("a");
 
           link.href = `/user-details.html?id=${user.id}`;
-          link.innerText = "link";
-          userCard.append(link);
+          link.innerText = "";
+          
+          const userPhoto = document.createElement("img");
+          const userName = document.createElement("span");
 
           const userPhotoIndex = photos.find((photo) => photo.id === user.id);
           userPhoto.src = userPhotoIndex.url;
@@ -91,9 +69,13 @@ fetch("https://jsonplaceholder.typicode.com/photos")
           userPhoto.classList.add("users-card__photo");
           userName.classList.add("users-card__name");
 
+          userCard.addEventListener("click", () => {
+            window.location.href = `user.html?id=${user.id}`;
+          });
           userCard.appendChild(userPhoto);
           userCard.appendChild(userName);
-          usersPhotos.appendChild(userCard);
+          link.appendChild(userCard); // Додаємо userCard всередину елементу "a"
+          usersPhotos.appendChild(link); //додаємо посилання всередину списку
         });
       });
   });
